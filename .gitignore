@@ -1,0 +1,19 @@
+# Node.js
+node_modules/
+.env
+npm-debug.log
+yarn-error.log
+
+# React build
+client/build/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.iml
