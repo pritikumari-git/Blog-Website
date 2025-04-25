@@ -12,7 +12,7 @@ const Component = styled(Box)`
     align-items: center;
     height: 100vh; /* Full viewport height */
     width: 100vw; /* Full viewport width */
-    background: linear-gradient(135deg, #f0f0f0, #ffffff); /* Subtle gradient background */
+    background-image: url('${process.env.PUBLIC_URL}/login-background.png');
 
     @media (max-width: 600px) {
         background: #ffffff; /* White background for small screens */
@@ -30,11 +30,13 @@ const Wrapper = styled(Box)`
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     background: #fff;
-    & > div, & > button, & > p {
+    & > div,
+    & > button,
+    & > p {
         margin-top: 10px;
     }
     @media (max-width: 600px) {
-       box-shadow: none; /* Remove shadow on small screens */
+        box-shadow: none; /* Remove shadow on small screens */
     }
 `;
 
@@ -46,14 +48,14 @@ const Image = styled('img')({
 
 const LoginButton = styled(Button)`
     text-transform: none;
-    background: linear-gradient(90deg, #FB641B, #FF8E53);
+    background: linear-gradient(90deg, #fb641b, #ff8e53);
     color: #fff;
     height: 50px;
     border-radius: 25px;
     font-weight: bold;
     transition: all 0.3s ease;
     &:hover {
-        background: linear-gradient(90deg, #FF8E53, #FB641B);
+        background: linear-gradient(90deg, #ff8e53, #fb641b);
         box-shadow: 0px 4px 10px rgba(251, 100, 27, 0.5);
     }
 `;
@@ -65,6 +67,7 @@ const SignupButton = styled(Button)`
     height: 50px;
     border-radius: 25px;
     font-weight: bold;
+    border: 1px solid #2874f0;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     &:hover {
@@ -90,7 +93,7 @@ const Error = styled(Typography)`
 
 const loginInitialValues = {
     username: '',
-    password: ''
+    password: '',
 };
 
 const signupInitialValues = {
@@ -108,7 +111,8 @@ const Login = ({ isUserAuthenticated }) => {
     const navigate = useNavigate();
     const { setAccount } = useContext(DataContext);
 
-    const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
+    const imageURL =
+        'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
 
     useEffect(() => {
         showError(false);
@@ -127,9 +131,18 @@ const Login = ({ isUserAuthenticated }) => {
         if (response.isSuccess) {
             showError('');
 
-            sessionStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
-            sessionStorage.setItem('refreshToken', `Bearer ${response.data.refreshToken}`);
-            setAccount({ name: response.data.name, username: response.data.username });
+            sessionStorage.setItem(
+                'accessToken',
+                `Bearer ${response.data.accessToken}`,
+            );
+            sessionStorage.setItem(
+                'refreshToken',
+                `Bearer ${response.data.refreshToken}`,
+            );
+            setAccount({
+                name: response.data.name,
+                username: response.data.username,
+            });
 
             isUserAuthenticated(true);
             setLogin(loginInitialValues);
@@ -178,7 +191,10 @@ const Login = ({ isUserAuthenticated }) => {
 
                         {error && <Error>{error}</Error>}
 
-                        <LoginButton variant="contained" onClick={() => loginUser()}>
+                        <LoginButton
+                            variant="contained"
+                            onClick={() => loginUser()}
+                        >
                             Login
                         </LoginButton>
                         <Text>OR</Text>
@@ -211,9 +227,14 @@ const Login = ({ isUserAuthenticated }) => {
                             type="password"
                         />
 
-                        <SignupButton onClick={() => signupUser()}>Signup</SignupButton>
+                        <SignupButton onClick={() => signupUser()}>
+                            Signup
+                        </SignupButton>
                         <Text>OR</Text>
-                        <LoginButton variant="contained" onClick={() => toggleSignup()}>
+                        <LoginButton
+                            variant="contained"
+                            onClick={() => toggleSignup()}
+                        >
                             Already have an account
                         </LoginButton>
                     </>

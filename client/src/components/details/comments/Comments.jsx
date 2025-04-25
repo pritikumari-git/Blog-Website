@@ -16,12 +16,12 @@ const Container = styled(Box)`
 const Image = styled('img')({
     width: 50,
     height: 50,
-    borderRadius: '50%'
+    borderRadius: '50%',
 });
 
 const StyledTextArea = styled(TextareaAutosize)`
     height: 100px !important;
-    width: 100%; 
+    width: 100%;
     margin: 0 20px;
 `;
 
@@ -29,11 +29,11 @@ const initialValue = {
     name: '',
     postId: '',
     date: new Date(),
-    comments: ''
-}
+    comments: '',
+};
 
 const Comments = ({ post }) => {
-    const url = 'https://static.thenounproject.com/png/12017-200.png'
+    const url = 'https://static.thenounproject.com/png/12017-200.png';
 
     const [comment, setComment] = useState(initialValue);
     const [comments, setComments] = useState([]);
@@ -47,7 +47,7 @@ const Comments = ({ post }) => {
             if (response.isSuccess) {
                 setComments(response.data);
             }
-        }
+        };
         getData();
     }, [toggle, post]);
 
@@ -56,43 +56,45 @@ const Comments = ({ post }) => {
             ...comment,
             name: account.username,
             postId: post._id,
-            comments: e.target.value
+            comments: e.target.value,
         });
-    }
+    };
 
-    const addComment = async() => {
+    const addComment = async () => {
         await API.newComment(comment);
-        setComment(initialValue)
-        setToggle(prev => !prev);
-    }
-    
+        setComment(initialValue);
+        setToggle((prev) => !prev);
+    };
+
     return (
         <Box>
             <Container>
-                <Image src={url} alt="dp" />   
-                <StyledTextArea 
-                    rowsMin={5} 
+                <Image src={url} alt="dp" />
+                <StyledTextArea
+                    minRows={5}
                     placeholder="what's on your mind?"
-                    onChange={(e) => handleChange(e)} 
+                    onChange={(e) => handleChange(e)}
                     value={comment.comments}
                 />
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    size="medium" 
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="medium"
                     style={{ height: 40 }}
                     onClick={(e) => addComment(e)}
-                >Post</Button>             
+                >
+                    Post
+                </Button>
             </Container>
             <Box>
-                {
-                    comments && comments.length > 0 && comments.map(comment => (
+                {comments &&
+                    comments.length > 0 &&
+                    comments.map((comment) => (
                         <Comment comment={comment} setToggle={setToggle} />
-                    ))
-                }
+                    ))}
             </Box>
         </Box>
-    )
-}
+    );
+};
 
 export default Comments;
