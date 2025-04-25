@@ -99,38 +99,11 @@ npm run dev
 # In client folder
 npm start
 🌐 Deployment
-Frontend Deployed at: your-frontend-deploy-link
+Frontend Deployed at: https://blog-frontend-7msi.onrender.com
 
-Backend Deployed at: your-backend-deploy-link
+Backend Deployed at: https://blog-backend-s7km.onrender.com
 
-Frontend connected to backend using:
 
-javascript
-Copy
-Edit
-const API = axios.create({
-  baseURL: 'https://your-backend-service.onrender.com',
-});
-📋 Folder Structure
-bash
-Copy
-Edit
-mern-blog-website/
-│
-├── client/    # React Frontend
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│
-├── server/    # Node.js Backend
-│   ├── models/
-│   ├── routes/
-│   ├── controllers/
-│   ├── middlewares/
-│   ├── index.js
-│   ├── package.json
-│
-└── README.md
 🤝 Contributing
 Pull requests are welcome!
 Feel free to open an issue or submit a PR if you want to improve it.
