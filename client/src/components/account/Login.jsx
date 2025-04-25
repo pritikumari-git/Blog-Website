@@ -133,7 +133,7 @@ const Login = ({ isUserAuthenticated }) => {
                 {
                     account === 'login' ?
                         <Wrapper>
-                            <TextField variant="standard" value={login.username} onChange={(e) => onValueChange(e)} name='username' label='Enter Username' />
+                            <TextField variant="standard" value={login.username} onChange={(e) => onValueChange(e)} name='username' label='Enter Email' />
                             <TextField variant="standard" value={login.password} onChange={(e) => onValueChange(e)} name='password' label='Enter Password' />
 
                             {error && <Error>{error}</Error>}
