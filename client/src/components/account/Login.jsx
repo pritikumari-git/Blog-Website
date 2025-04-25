@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import { TextField, Box, Button, Typography, styled } from '@mui/material';
+import { TextField, Box, Button, Typography, styled, CircularProgress } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import { API } from '../../service/api';
@@ -106,6 +106,7 @@ const Login = ({ isUserAuthenticated }) => {
     const [login, setLogin] = useState(loginInitialValues);
     const [signup, setSignup] = useState(signupInitialValues);
     const [error, showError] = useState('');
+    const [loading, setLoading] = useState(false);
     const [account, toggleAccount] = useState('login');
 
     const navigate = useNavigate();
@@ -127,7 +128,9 @@ const Login = ({ isUserAuthenticated }) => {
     };
 
     const loginUser = async () => {
+        setLoading(true);
         let response = await API.userLogin(login);
+        setLoading(false);
         if (response.isSuccess) {
             showError('');
 
@@ -153,7 +156,9 @@ const Login = ({ isUserAuthenticated }) => {
     };
 
     const signupUser = async () => {
+        setLoading(true);
         let response = await API.userSignup(signup);
+        setLoading(false);
         if (response.isSuccess) {
             showError('');
             setSignup(signupInitialValues);
@@ -194,11 +199,12 @@ const Login = ({ isUserAuthenticated }) => {
                         <LoginButton
                             variant="contained"
                             onClick={() => loginUser()}
+                           
                         >
-                            Login
+                            {loading ? <CircularProgress size={24} color="inherit" /> : 'Login'}
                         </LoginButton>
                         <Text>OR</Text>
-                        <SignupButton onClick={() => toggleSignup()}>
+                        <SignupButton onClick={() => toggleSignup()} disabled={loading}>
                             Create an account
                         </SignupButton>
                     </>
@@ -234,6 +240,7 @@ const Login = ({ isUserAuthenticated }) => {
                         <LoginButton
                             variant="contained"
                             onClick={() => toggleSignup()}
+                            disabled={loading}
                         >
                             Already have an account
                         </LoginButton>

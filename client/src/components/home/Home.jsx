@@ -8,7 +8,7 @@ import Posts from './post/Posts';
 const Home = () => {
     return (
         <>
-            <Grid container>
+            <Grid container spacing={2}>
                 <Grid
                     item
                     lg={3}

@@ -8,7 +8,7 @@ import {
     InputBase,
     FormControl,
 } from '@mui/material';
-import { AddCircle as Add } from '@mui/icons-material';
+import { AddCircle as Add, Image as EditImage } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { API } from '../../service/api';
@@ -31,6 +31,8 @@ const StyledFormControl = styled(FormControl)`
     margin-top: 10px;
     display: flex;
     flex-direction: row;
+    margin: 20px;
+    align-items: center;
 `;
 
 const InputTextField = styled(InputBase)`
@@ -42,7 +44,7 @@ const InputTextField = styled(InputBase)`
 const Textarea = styled(TextareaAutosize)`
     width: 100%;
     border: none;
-    margin-top: 50px;
+    margin: 20px;
     font-size: 18px;
     &:focus-visible {
         outline: none;
@@ -101,7 +103,7 @@ const CreatePost = () => {
 
             <StyledFormControl>
                 <label htmlFor="fileInput">
-                    <Add fontSize="large" color="action" />
+                    <EditImage fontSize="large" color="action" />
                 </label>
                 <input
                     type="file"

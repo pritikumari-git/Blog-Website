@@ -20,12 +20,13 @@ const SidebarContainer = styled(Box)`
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 0 auto;
-    margin-top: 40px;
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
+        margin-top: 40px;
         width: auto;
         box-shadow: none;
         background: transparent;
         padding: 0;
+        margin: 10px;
     }
 `;
 
