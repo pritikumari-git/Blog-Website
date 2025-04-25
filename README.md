@@ -137,8 +137,8 @@ Feel free to open an issue or submit a PR if you want to improve it.
 
 📞 Contact
 Priti Kumari
-📧 [your-email@example.com]
-🌐 LinkedIn Profile
+📧 pritikumari.work@gmail.com
+🌐 https://www.linkedin.com/in/pritikumari-work/
 
 If you liked this project, don't forget to give it a ⭐ on GitHub!
 
