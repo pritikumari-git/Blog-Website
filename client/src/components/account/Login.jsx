@@ -144,7 +144,7 @@ const Login = ({ isUserAuthenticated }) => {
                         </Wrapper> :
                         <Wrapper>
                             <TextField variant="standard" onChange={(e) => onInputChange(e)} name='name' label='Enter Name' />
-                            <TextField variant="standard" onChange={(e) => onInputChange(e)} name='username' label='Enter Username' />
+                            <TextField variant="standard" onChange={(e) => onInputChange(e)} name='username' label='Enter Email' />
                             <TextField variant="standard" onChange={(e) => onInputChange(e)} name='password' label='Enter Password' />
 
                             <SignupButton onClick={() => signupUser()} >Signup</SignupButton>
